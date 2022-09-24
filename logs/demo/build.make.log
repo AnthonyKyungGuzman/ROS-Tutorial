@@ -1,0 +1,8 @@
+[35m[1mScanning dependencies of target pub[0m
+[35m[1mScanning dependencies of target subs[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/pub.dir/src/publisher.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/subs.dir/src/subscriber.cpp.o[0m
+[ 75%] [32m[1mLinking CXX executable /home/anthony/projects/sandbox/demo_ws/devel/.private/demo/lib/demo/pub[0m
+[ 75%] Built target pub
+[100%] [32m[1mLinking CXX executable /home/anthony/projects/sandbox/demo_ws/devel/.private/demo/lib/demo/subs[0m
+[100%] Built target subs

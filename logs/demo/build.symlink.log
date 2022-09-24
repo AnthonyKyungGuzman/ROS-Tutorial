@@ -1,0 +1,5 @@
+Symlinking /home/anthony/projects/sandbox/demo_ws/devel/share/demo/cmake/demoConfig.cmake
+Symlinking /home/anthony/projects/sandbox/demo_ws/devel/share/demo/cmake/demoConfig-version.cmake
+Symlinking /home/anthony/projects/sandbox/demo_ws/devel/lib/demo/pub
+Symlinking /home/anthony/projects/sandbox/demo_ws/devel/lib/demo/subs
+Symlinking /home/anthony/projects/sandbox/demo_ws/devel/lib/pkgconfig/demo.pc
