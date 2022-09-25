@@ -1,0 +1,5 @@
+debug: True
+rate: 1000
+amplitude: 1
+frequency: 10
+phase: 0

@@ -1,6 +1,0 @@
-devel_space: /home/anthony/projects/sandbox/demo_ws/devel
-install: false
-install_space: /home/anthony/projects/sandbox/demo_ws/install
-profile: default
-source_space: /home/anthony/projects/sandbox/demo_ws/src
-workspace: /home/anthony/projects/sandbox/demo_ws

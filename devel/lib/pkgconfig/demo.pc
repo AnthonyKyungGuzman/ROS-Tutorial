@@ -1,1 +1,0 @@
-/home/anthony/projects/sandbox/demo_ws/devel/.private/demo/lib/pkgconfig/demo.pc

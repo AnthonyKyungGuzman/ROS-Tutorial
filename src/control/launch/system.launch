@@ -1,0 +1,16 @@
+<launch>
+
+    <node pkg="sensor" type="sensor" name="sensor_node" output="screen">
+      <rosparam command="load" file="$(find sensor)/config/params.yaml" />
+    </node>
+
+    <node pkg="path_planning" type="path_planning" name="path_planning_node" output="screen">
+      <rosparam command="load" file="$(find path_planning)/config/params.yaml" />
+    </node>
+
+    <node pkg="control" type="control" name="control_node" output="screen">
+      <rosparam command="load" file="$(find control)/config/params.yaml" />
+    </node>
+
+
+</launch>

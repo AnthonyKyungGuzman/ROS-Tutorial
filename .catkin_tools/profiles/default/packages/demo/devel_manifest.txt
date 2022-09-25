@@ -1,7 +1,0 @@
-demo
-/home/anthony/projects/sandbox/demo_ws/devel/.private/demo/cmake.lock /home/anthony/projects/sandbox/demo_ws/devel/./cmake.lock
-/home/anthony/projects/sandbox/demo_ws/devel/.private/demo/share/demo/cmake/demoConfig.cmake /home/anthony/projects/sandbox/demo_ws/devel/share/demo/cmake/demoConfig.cmake
-/home/anthony/projects/sandbox/demo_ws/devel/.private/demo/share/demo/cmake/demoConfig-version.cmake /home/anthony/projects/sandbox/demo_ws/devel/share/demo/cmake/demoConfig-version.cmake
-/home/anthony/projects/sandbox/demo_ws/devel/.private/demo/lib/demo/pub /home/anthony/projects/sandbox/demo_ws/devel/lib/demo/pub
-/home/anthony/projects/sandbox/demo_ws/devel/.private/demo/lib/demo/subs /home/anthony/projects/sandbox/demo_ws/devel/lib/demo/subs
-/home/anthony/projects/sandbox/demo_ws/devel/.private/demo/lib/pkgconfig/demo.pc /home/anthony/projects/sandbox/demo_ws/devel/lib/pkgconfig/demo.pc
