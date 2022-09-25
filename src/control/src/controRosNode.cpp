@@ -6,20 +6,12 @@
 int g_rate;
 bool g_is_debug;
 
-
-Eigen::Vector3d g_imu_data;
-Eigen::Vector3d g_ref;
-
-
 void ImuCallback(const sensor_msgs::Imu::ConstPtr& msg)
 {
   ROS_DEBUG("IMU Received Data x: %d, y: %d, z: %d",
     msg.linear_acceleration.x, 
     msg.linear_acceleration.y, 
     msg.linear_acceleration.z);
-  g_imu_data.x = msg.linear_acceleration.x;
-  g_imu_data.y = msg.linear_acceleration.y;
-  g_imu_data.z = msg.linear_acceleration.z;
 }
 
 void RefCallback(const geometry_msgs::PoseStamped::ConstPtr& msg)
@@ -28,9 +20,6 @@ void RefCallback(const geometry_msgs::PoseStamped::ConstPtr& msg)
     msg.pose.position.x, 
     msg.pose.position.y, 
     msg.pose.position.z);
-  g_ref.x = msg.pose.position.x;
-  g_ref.y = msg.pose.position.y;
-  g_ref.z = msg.pose.position.z;
 }
 
 
