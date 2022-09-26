@@ -1,22 +1,22 @@
 #include "ros/ros.h"
 #include "sensor_msgs/Imu.h"
 #include "geometry_msgs/PoseStamped.h"
-#include "Eigen/Dense"
+#include "eigen3/Eigen/Dense"
  
 int g_rate;
 bool g_is_debug;
 
-void ImuCallback(const sensor_msgs::Imu::ConstPtr& msg)
+void ImuCallback(const sensor_msgs::Imu& msg)
 {
-  ROS_DEBUG("IMU Received Data x: %d, y: %d, z: %d",
+  ROS_DEBUG("IMU Received Data in node control x: %f, y: %f, z: %f \n",
     msg.linear_acceleration.x, 
     msg.linear_acceleration.y, 
     msg.linear_acceleration.z);
 }
 
-void RefCallback(const geometry_msgs::PoseStamped::ConstPtr& msg)
+void RefCallback(const geometry_msgs::PoseStamped& msg)
 {
-  ROS_DEBUG("IMU Received Data x: %d, y: %d, z: %d",
+  ROS_DEBUG("IMU Received Data x: %f, y: %f, z: %f \n",
     msg.pose.position.x, 
     msg.pose.position.y, 
     msg.pose.position.z);

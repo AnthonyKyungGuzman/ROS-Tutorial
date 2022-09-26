@@ -1,8 +1,8 @@
 #include "ros/ros.h"
 #include "sensor_msgs/Imu.h"
 #include "geometry_msgs/PoseStamped.h"
-#include "Eigen/Dense"
-#include <math.h>
+#include <eigen3/Eigen/Dense>
+#include <cmath>
  
 int g_rate;
 bool g_is_debug;
@@ -13,23 +13,24 @@ double g_w;
 
 Eigen::Vector3d g_imu_data;
 
-void ImuCallback(const sensor_msgs::Imu::ConstPtr& msg)
+void ImuCallback(const sensor_msgs::Imu& msg)
 {
-  ROS_DEBUG("IMU Received Data x: %d, y: %d, z: %d",
+  ROS_DEBUG("IMU Received Data in node Reference x: %f, y: %f, z: %f \n",
     msg.linear_acceleration.x, 
     msg.linear_acceleration.y, 
     msg.linear_acceleration.z);
-  g_imu_data.x = msg.linear_acceleration.x;
-  g_imu_data.y = msg.linear_acceleration.y;
-  g_imu_data.z = msg.linear_acceleration.z;
+  g_imu_data.x() = msg.linear_acceleration.x;
+  g_imu_data.y() = msg.linear_acceleration.y;
+  g_imu_data.z() = msg.linear_acceleration.z;
 }
 
 Eigen::Vector3d CreatePath(void)
 {
   Eigen::Vector3d reference;
   //GeneratePath();
-  reference.x = g_amplitude*sin(g_w*g_imu_data.x + g_phase);
-  reference.y = g_amplitude*cos(g_w*g_imu_data.x + g_phase);
+  reference.x() = g_amplitude*sin(g_w*g_imu_data.x() + g_phase);
+  reference.y() = g_amplitude*cos(g_w*g_imu_data.x() + g_phase);
+  reference.z() = 0.0; 
 
   return reference;
 }
@@ -43,7 +44,11 @@ void GetParams(ros::NodeHandle nh)
   nh.getParam("frequency",g_freq);
   nh.getParam("phase",g_phase);
 
-  g_w = 2*M_PI*g_freq;
+  g_w = 2*M_PI*(g_freq/g_rate);
+  std::cout << "gw  " << g_w << std::endl;
+  g_imu_data.x() = 0.0;
+  g_imu_data.y() = 0.0;
+  g_imu_data.z() = 0.0;
 }
 
 
@@ -78,13 +83,13 @@ int main(int argc, char **argv)
   {
     ros::spinOnce();
 
-    Eigen::Vector3d reference = GetSensorData();
+    Eigen::Vector3d reference = CreatePath();
     ref_msg.header.stamp = ros::Time::now();
-    ref_msg.pose.position.x = reference.x;
-    ref_msg.pose.position.y = reference.y;
-    ref_msg.pose.position.z = reference.z;
+    ref_msg.pose.position.x = reference.x();
+    ref_msg.pose.position.y = reference.y();
+    ref_msg.pose.position.z = reference.z();
 
-    ROS_DEBUG("Reference x: %d, y: %d, z: %d",reference.x, reference.y, reference.z);
+    ROS_DEBUG("Reference Data x: %f, y: %f, z: %f",reference.x(), reference.y(), reference.z());
     
     ref_pub.publish(ref_msg);
     loop_rate.sleep();
@@ -92,3 +97,4 @@ int main(int argc, char **argv)
 
   return 0;
 }
+

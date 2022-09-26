@@ -1,4 +1,4 @@
-debug: True
+debug: False
 rate: 1000
 amplitude: 1
 frequency: 10

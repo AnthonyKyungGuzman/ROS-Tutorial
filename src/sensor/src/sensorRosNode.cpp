@@ -1,6 +1,6 @@
 #include "ros/ros.h"
 #include "sensor_msgs/Imu.h"
-#include "Eigen/Dense"
+#include "eigen3/Eigen/Dense"
  
 int g_rate;
 bool g_is_debug;
@@ -10,12 +10,12 @@ Eigen::Vector3d GetSensorData(void)
   static Eigen::Vector3d data(1, -1, 0);
   Eigen::Vector3d imu_data;
   //ReadImu();
-  imu_data.x = data.x;
-  imu_data.y = data.y;
-  imu_data.z = data.z;
+  imu_data.x() = data.x();
+  imu_data.y() = data.y();
+  imu_data.z() = data.z();
 
-  data.x += 1;
-  data.y -= -1; 
+  data.x() += 1;
+  data.y() -= 1; 
   return imu_data;
 }
 
@@ -58,11 +58,11 @@ int main(int argc, char **argv)
     
     Eigen::Vector3d imu_data = GetSensorData();
     imu_msg.header.stamp = ros::Time::now();
-    imu_msg.linear_acceleration.x = imu_data.x;
-    imu_msg.linear_acceleration.y = imu_data.y;
-    imu_msg.linear_acceleration.z = imu_data.z;
+    imu_msg.linear_acceleration.x = imu_data.x();
+    imu_msg.linear_acceleration.y = imu_data.y();
+    imu_msg.linear_acceleration.z = imu_data.z();
 
-    ROS_DEBUG("IMU Data x: %d, y: %d, z: %d",imu_data.x, imu_data.y, imu_data.z);
+    ROS_DEBUG("IMU Data x: %f, y: %f, z: %f",imu_data.x(), imu_data.y(), imu_data.z());
     
     imu_pub.publish(imu_msg);
     loop_rate.sleep();

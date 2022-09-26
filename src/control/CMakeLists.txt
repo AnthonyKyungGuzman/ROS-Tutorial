@@ -9,12 +9,13 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   geometry_msgs
   sensor_msgs
-  Eigen3 REQUIRED
 )
+
+find_package(Eigen3 REQUIRED)
 
 catkin_package(
   DEPENDS Eigen3 
-  INCLUDE_DIRS include ${Eigen3_INCLUDE_DIRS}
+  INCLUDE_DIRS ${Eigen3_INCLUDE_DIRS}
 )
 
 include_directories(
@@ -22,7 +23,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-
 add_executable(control src/controlRosNode.cpp)
 target_link_libraries(control ${catkin_LIBRARIES})
+
 
